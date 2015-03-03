@@ -4,7 +4,7 @@ class Functions {
 	public static function namedArgs($function, array $params) {
 		if(!is_string($function))
 			return false;
-		if(!is_assoc($params)) {
+		if(!self::is_assoc($params)) {
 			return $function(...$params);
 		} else {
 			if(function_exists($function) AND is_callable($function)) {
@@ -26,6 +26,10 @@ class Functions {
 				return $function(...$funcparams);
 			}
 		}
+	}
+
+	public static function is_assoc($arr) {
+		return array_keys($arr) !== range(0, count($arr) - 1);
 	}
 }
 ?>
